@@ -24,12 +24,19 @@ namespace SweeftDigitalTest
 
         private static int CountVariants(int stairs)
         {
-            if (stairs == 0)
+            if (stairs == 0 || stairs == 1)
                 return 1;
-            else if (stairs < 0)
-                return 0;
 
-            return CountVariants(stairs - 1) + CountVariants(stairs - 2);
+            int[] variants = new int[stairs + 1];
+            variants[0] = 1;
+            variants[1] = 1;
+
+            for (int i = 2; i <= stairs; i++)
+            {
+                variants[i] = variants[i - 1] + variants[i - 2];
+            }
+
+            return variants[stairs];
         }
     }
 }
