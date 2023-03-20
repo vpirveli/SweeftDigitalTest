@@ -32,6 +32,8 @@ namespace SweeftDigitalTest
 
                 return IsPalindrome(text.Substring(1, text.Length - 2));
             }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

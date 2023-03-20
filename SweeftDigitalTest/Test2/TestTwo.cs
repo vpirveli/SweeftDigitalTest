@@ -33,6 +33,8 @@ namespace SweeftDigitalTest
 
                 return coinCounts;
             }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

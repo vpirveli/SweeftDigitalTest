@@ -38,6 +38,8 @@ namespace SweeftDigitalTest
             Thread.Sleep(CalculateTimer);
 
             Console.WriteLine(notContains);
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         private static void AnimatedText(string message)
