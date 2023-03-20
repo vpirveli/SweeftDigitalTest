@@ -1,0 +1,46 @@
+CREATE TABLE [dbo].[Pupil](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](50) NOT NULL,
+	[Gender] [bit] NOT NULL,
+	[Grade] [int] NOT NULL,
+ CONSTRAINT [PK_Pupils] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY];
+
+CREATE TABLE [dbo].[Teacher](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](50) NOT NULL,
+	[Gender] [bit] NOT NULL,
+	[Subject] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Teacher] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY];
+
+CREATE TABLE [dbo].[TeacherPupil](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TeacherId] [int] NOT NULL,
+	[PupilID] [int] NOT NULL,
+ CONSTRAINT [PK_TeacherPupil] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY];
+
+ALTER TABLE [dbo].[TeacherPupil]  WITH CHECK ADD  CONSTRAINT [FK_TeacherPupil_Pupils] FOREIGN KEY([PupilID])
+REFERENCES [dbo].[Pupil] ([Id]);
+
+ALTER TABLE [dbo].[TeacherPupil] CHECK CONSTRAINT [FK_TeacherPupil_Pupils];
+
+ALTER TABLE [dbo].[TeacherPupil]  WITH CHECK ADD  CONSTRAINT [FK_TeacherPupil_Teacher] FOREIGN KEY([TeacherId])
+REFERENCES [dbo].[Teacher] ([Id]);
+
+ALTER TABLE [dbo].[TeacherPupil] CHECK CONSTRAINT [FK_TeacherPupil_Teacher]
+
+
+
